@@ -1,0 +1,22 @@
+server:
+    port: 3331
+spring:
+    application:
+        name: order-service
+    zipkin:
+        base-url: http://localhost:9411/
+        
+eureka:
+    client:
+        registerWithEureka: true
+        fetchRegistry: true
+        availabilityZones:
+            default: ${APPLICATION_DOMAIN:${DOMAIN:defaultZone}}
+    serviceUrl:
+        defaultZone: ${vcap.services.sessionqaeureka.credentials.uri:http://localhost:8761/eureka}
+    instance:
+        leaseRenewalIntervalInSeconds: 50
+        leaseExpirationDurationInSeconds: 30
+        preferlpAddress: false
+        statusPageUrlPath: /info
+        healthCheckUrlPath: /health
